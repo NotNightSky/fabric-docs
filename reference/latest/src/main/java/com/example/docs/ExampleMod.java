@@ -1,15 +1,6 @@
 package com.example.docs;
 
 import com.terraformersmc.biolith.api.biome.BiomePlacement;
-
-import net.fabricmc.fabric.api.biome.v1.NetherBiomes;
-
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.biome.Biomes;
-import net.minecraft.world.level.biome.Climate;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -17,13 +8,20 @@ import net.minecraft.core.Registry;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.BiomeTags;
+import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.biome.Biomes;
+import net.minecraft.world.level.biome.Climate;
 import net.minecraft.world.level.levelgen.GenerationStep;
 
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
+import net.fabricmc.fabric.api.biome.v1.NetherBiomes;
+import net.fabricmc.fabric.api.biome.v1.TheEndBiomes;
 import net.fabricmc.fabric.api.item.v1.ItemComponentTooltipProviderRegistry;
 import net.fabricmc.fabric.api.particle.v1.FabricParticleTypes;
 
@@ -102,6 +100,8 @@ public class ExampleMod implements ModInitializer {
 		// :::world-gen-biomes:overworld-addition
 
 		// :::world-gen-biomes:nether-addition-biolith
+		// Note :- If the biome is not specifically made for the Nether then
+		// The biome will spawn above the Nether roof.
 		BiomePlacement.addNether(Biomes.ICE_SPIKES,
 						new Climate.ParameterPoint(
 										Climate.Parameter.span(-1.0f, 1.0f),
@@ -113,7 +113,23 @@ public class ExampleMod implements ModInitializer {
 										0L));
 		// :::world-gen-biomes:nether-addition-biolith
 
+		// :::world-gen-biomes:end-addition-biolith
+		// Note :- If the biome is not specifically made for the End then
+		// The biomes will spawn with endstone as the base.
+		BiomePlacement.addEnd(Biomes.BAMBOO_JUNGLE,
+						new Climate.ParameterPoint(
+										Climate.Parameter.span(-1.0f, 1.0f),
+										Climate.Parameter.span(-1.0f, -0.5f),
+										Climate.Parameter.span(-0.3f, 1.0f),
+										Climate.Parameter.span(-0.375f, 0.50f),
+										Climate.Parameter.point(0.0f),
+										Climate.Parameter.span(-0.5f, 1.0f),
+										0L));;
+		// :::world-gen-biomes:end-addition-biolith
+
 		// :::world-gen-biomes:nether-addition-fabricapi
+		// Note :- If the biome is not specifically made for the Nether then
+		// The biome will spawn above the Nether roof.
 		NetherBiomes.addNetherBiome(Biomes.FROZEN_PEAKS,
 						new Climate.ParameterPoint(
 							Climate.Parameter.span(-1.0f, 1.0f),
@@ -124,5 +140,15 @@ public class ExampleMod implements ModInitializer {
 							Climate.Parameter.span(-0.5f, 1.0f),
 							0L));
 		// :::world-gen-biomes:nether-addition-fabricapi
+
+		// :::world-gen-biomes:end-addition-fabricapi
+		// Note :- If the biome is not specifically made for the End then
+		// The biomes will spawn with endstone as the base.
+		TheEndBiomes.addMainIslandBiome(Biomes.BIRCH_FOREST, 1.0);
+		TheEndBiomes.addHighlandsBiome(Biomes.ICE_SPIKES, 1.0);
+		TheEndBiomes.addSmallIslandsBiome(Biomes.MUSHROOM_FIELDS, 1.0);
+		TheEndBiomes.addMidlandsBiome(Biomes.END_HIGHLANDS, Biomes.PLAINS, 1.0);
+		TheEndBiomes.addBarrensBiome(Biomes.END_HIGHLANDS, Biomes.DESERT, 1.0);
+		// :::world-gen-biomes:end-addition-fabricapi
 	}
 }

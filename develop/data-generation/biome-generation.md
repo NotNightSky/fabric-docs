@@ -5,6 +5,9 @@ authors:
   - Wind292
   - NotNightSky
   - TerraformersMC
+resources:
+  https://minecraft.wiki/w/World_generation: Minecraft World Generation Wiki
+  https://github.com/TerraformersMC/Biolith/wiki: Biolith Wiki
 ---
 
 <!---->
@@ -15,11 +18,11 @@ Make sure you've completed the [datagen setup](./setup) and [biome creation](./b
 
 :::
 
-To change what biomes can spawn in the overworld in minecraft you will need\* a external mod to manage the generation of biomes as the Fabric API does not implement it itself.
+To change what biomes can spawn in the overworld in minecraft you will need\* an external mod to manage the generation of biomes as the Fabric API does not implement it itself.
 
 ::: info
 
-\* It is possible to add your own custom biomes directly to the overworld/end with mixins by overwriting the target dimension's data file, but it is not recommended. If you do so the compatibility with other mods' biomes will be terrible. Though adding to the Nether specifically [_is supported_](#nether-biome-fabricapi).
+\* It is possible to add your own custom biomes directly to the overworld with mixins by overwriting the target dimension's data file, but it is not recommended. If you do so the compatibility with other mods' biomes will be compromised. Though adding to the Nether and End [_is supported_](#nether-biome-fabricapi).
 
 :::
 
@@ -53,11 +56,15 @@ To add a biome to one of the default dimensions it is as simple as adding as fol
 
 @[code lang=java transcludeWith=:::world-gen-biomes:overworld-addition](@/reference/latest/src/main/java/com/example/docs/ExampleMod.java)
 
-To add a biome to another dimension you can just use the other variants of the method above, for example:
+To add a biome to the Nether and the End you can just use the other variants of the method above, for Nether:
 
 @[code lang=java transcludeWith=:::world-gen-biomes:nether-addition-biolith](@/reference/latest/src/main/java/com/example/docs/ExampleMod.java)
 
-If you want to add a biome to a custom dimension refer to the `Multi Noise` section of the [Dimension Creation page](./dimension-creation/#multi-noise).
+And for The End:
+
+@[code lang=java transcludeWith=:::world-gen-biomes:end-addition-biolith](@/reference/latest/src/main/java/com/example/docs/ExampleMod.java)
+
+If you want to **add** a biome to a custom dimension refer to the `Multi Noise` section of the [Dimension Creation page](./dimension-creation/#multi-noise).
 
 ::: tip
 
@@ -65,12 +72,16 @@ Highly recommend to read [this wiki page](https://minecraft.wiki/w/World_generat
 
 :::
 
-## Adding Nether Biomes With The FabricAPI {#nether-biome-fabricapi}
+## Adding Nether and End Biomes With The FabricAPI {#nether-biome-fabricapi}
 
 You can add a biome to the Nether via FabricAPI with syntax very similar to that of Biolith:
 
 @[code lang=java transcludeWith=:::world-gen-biomes:nether-addition-fabricapi](@/reference/latest/src/main/java/com/example/docs/ExampleMod.java)
 
-Note that the Fabric API **only** supports adding biome to the Nether.
+And you can add a biome to the End via FabricAPI but the syntax differs majorly from that of Biolith:
+
+@[code lang=java transcludeWith=:::world-gen-biomes:end-addition-fabricapi](@/reference/latest/src/main/java/com/example/docs/ExampleMod.java)
+
+Note that the Fabric API does **not** support adding biomes to the overworld.
 
 <!-- -->
