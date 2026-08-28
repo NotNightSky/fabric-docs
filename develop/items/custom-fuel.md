@@ -33,7 +33,7 @@ After creating the item, we will be using the `FuelValueEvents.BUILD` event from
 
 <<< @/reference/latest/src/main/java/com/example/docs/item/ModItems.java#fuel_item
 
-Now, create a 16x16 texture for your fuel item and place it in the `resources/assets/<modid>/textures/item` folder with the filename same as the resource key. An example texture is provided below:
+Now, create a 16x16 texture for your fuel item and place it in the `resources/assets/example-mod/textures/item` folder with the filename same as the resource key. An example texture is provided below:
 
 <DownloadEntry visualURL="/assets/develop/items/quark_gluon_plasma_big.png" downloadURL="/assets/develop/items/quark_gluon_plasma.png">Texture</DownloadEntry>
 
