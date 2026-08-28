@@ -22,8 +22,6 @@ Now, let's create a compostable item called `Bone Marrow` with the following pro
 
 <<< @/reference/latest/src/main/java/com/example/docs/item/ModItems.java#bone_marrow
 
-The`rarity` and `lore` properties and components are optional, but they can be used to make your compostable item more unique and interesting.
-
 After creating the item, we will be using the `CompostableRegistry.INSTANCE` registry from the fabric registry API to make the compostable.
 
 <<< @/reference/latest/src/main/java/com/example/docs/item/ModItems.java#compostable_item

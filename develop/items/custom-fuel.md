@@ -7,11 +7,6 @@ authors:
 
 Fuels are a core aspect of Minecraft, You need fuel to smelt items in a furnace and cook food, and you can create your own fuel items to add to the game.
 
-Unless you're making an overpowered fuel source, you should consider:
-
-- How long your fuel item will burn for?
-- Is it early-game or endgame accessible?
-
 ## Creating the Item {#creating-the-item}
 
 To create a fuel item, we do not need to add any special components to the item.
@@ -26,8 +21,6 @@ Now, let's create a fuel item called `Quark Gluon Plasma` with the following pro
 <<< @/reference/latest/src/main/java/com/example/docs/item/ModItemIds.java#quark_gluon_plasma_resource
 
 <<< @/reference/latest/src/main/java/com/example/docs/item/ModItems.java#quark_gluon_plasma
-
-The `stacksTo`, `rarity`, and `lore` properties and components are optional, but they can be used to make your fuel item more unique and interesting.
 
 After creating the item, we will be using the `FuelValueEvents.BUILD` event from the Fabric Content Registries API to make the fuel.
 

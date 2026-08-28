@@ -198,16 +198,6 @@ public class ModItems {
 			ModItemIds.QUARK_GLUON_PLASMA,
 			Item::new,
 			new Item.Properties()
-					.stacksTo(1)
-					.rarity(Rarity.EPIC)
-					.component(DataComponents.LORE,
-							new ItemLore(
-									List.of(
-											Component.literal("A strange substance that seems to be made of quarks and gluons."),
-											Component.literal("It is highly unstable and should be handled with care.")
-									)
-							)
-					)
 	);
 	// #endregion quark_gluon_plasma
 
@@ -216,15 +206,6 @@ public class ModItems {
 			ModItemIds.BONE_MARROW,
 			Item::new,
 			new Item.Properties()
-					.rarity(Rarity.UNCOMMON)
-					.component(DataComponents.LORE,
-							new ItemLore(
-									List.of(
-											Component.literal("A strange substance that seems to be bone marrow."),
-											Component.literal("It is made of soft tissue and may prove to be a great compostable.")
-									)
-							)
-					)
 	);
 	// #endregion bone_marrow
 
