@@ -28,7 +28,7 @@ After creating the item, we will be using the `CompostableRegistry.INSTANCE` reg
 
 <<< @/reference/latest/src/main/java/com/example/docs/item/ModItems.java#compostable_item
 
-Now, create a 16x16 texture for your compostable item and place it in the `resources/assets/<modid>/textures/item` folder with the filename same as the resource key. An example texture is provided below:
+Now, create a 16x16 texture for your compostable item and place it in the `resources/assets/example-mod/textures/item` folder with the filename same as the resource key. An example texture is provided below:
 
 <DownloadEntry visualURL="/assets/develop/items/bone_marrow_big.png" downloadURL="/assets/develop/items/bone_marrow.png">Texture</DownloadEntry>
 
