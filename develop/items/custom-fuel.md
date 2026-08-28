@@ -29,7 +29,7 @@ Now, let's create a fuel item called `Quark Gluon Plasma` with the following pro
 
 The `stacksTo`, `rarity`, and `lore` properties and components are optional, but they can be used to make your fuel item more unique and interesting.
 
-After creating the item, we will be using the `FuelValueEvents.BUILD` event from the fabric registry API to make the fuel.
+After creating the item, we will be using the `FuelValueEvents.BUILD` event from the Fabric Content Registries API to make the fuel.
 
 <<< @/reference/latest/src/main/java/com/example/docs/item/ModItems.java#fuel_item
 
