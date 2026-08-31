@@ -9,6 +9,8 @@ import net.minecraft.resources.Identifier;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keymapping.v1.KeyMappingHelper;
+import net.fabricmc.fabric.api.client.screen.v1.ScreenEvents;
+import net.fabricmc.fabric.api.client.screen.v1.ScreenKeyboardEvents;
 
 import com.example.docs.ExampleMod;
 
@@ -40,5 +42,21 @@ public class ExampleModKeyMappingsClient implements ClientModInitializer {
 			}
 		});
 		// #endregion client_tick_event
+
+		// #region screen_before_init_event
+		ScreenEvents.BEFORE_INIT.register((client, screen, scaledWidth, scaledHeight) -> {
+			ScreenKeyboardEvents.beforeKeyPress(screen).register((s, keyEvent) -> {
+				if (this.sendToChatKey.matches(keyEvent)) {
+					if (client.player == null) {
+						System.out.println("The key was pressed!");
+						return;
+					}
+
+					client.gui.setScreen(null);
+					client.player.sendSystemMessage(Component.literal("Key Pressed! Closing screen."));
+				}
+			});
+		});
+		// #endregion screen_before_init_event
 	}
 }

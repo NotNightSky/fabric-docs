@@ -4,6 +4,7 @@ description: Creating key mappings and reacting to them.
 authors:
   - cassiancc
   - dicedpixels
+  - NotNightSky
 resources:
   https://upload.wikimedia.org/wikipedia/commons/d/da/KB_United_States.svg: Standard US Keyboard Layout
 ---
@@ -65,7 +66,7 @@ Translations can be added manually or using [data generation](./data-generation/
 
 ![Translated Key Category and Mapping](/assets/develop/key-mappings/translated.png)
 
-## Reacting to Key Mappings {#reacting-to-key-mappings}
+## Reacting to Key Mappings In-Game {#reacting-to-key-mappings-in-game}
 
 Now that we have a key mapping, we can react to it using a client tick event.
 
@@ -74,3 +75,19 @@ Now that we have a key mapping, we can react to it using a client tick event.
 This will print "Key Pressed!" to the in-game chat every time the mapped key is pressed. Keep in mind that holding the key will repeatedly print the message to the chat, so you might want to implement guards if this logic only needs to trigger once.
 
 ![Message in Chat](/assets/develop/key-mappings/key_mapping_pressed.png)
+
+## Reacting to Key Mappings In-Screen {#reacting-to-key-mappings-in-screen}
+
+As you can see in the previous example, we react to key mappings in-game. However, we can also react to key mappings inside a screen.
+
+<<< @/reference/latest/src/client/java/com/example/docs/keymapping/ExampleModKeyMappingsClient.java#screen_before_init_event
+
+This will print "The key was pressed!" in the console if the player is not inside a world or else it will close the screen and print "Key Pressed! Closing screen" to the in-game chat every time the mapped key is pressed while the screen is open.
+
+::: tip
+
+it is recommended to wrap the `ScreenKeyboardEvents` with `screen instanceof` check to ensure that the event is only triggered in the intended screen otherwise it will trigger in all screens.
+
+:::
+
+<VideoPlayer src="/assets/develop/key-mappings/in_screen_key_map.webm">Close and print message</VideoPlayer>
