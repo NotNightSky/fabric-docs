@@ -66,7 +66,7 @@ Translations can be added manually or using [data generation](./data-generation/
 
 ![Translated Key Category and Mapping](/assets/develop/key-mappings/translated.png)
 
-## Reacting to Key Mappings In-Game {#reacting-to-key-mappings-in-game}
+## Reacting to Key Mappings outside of screens {#reacting-to-key-mappings}
 
 Now that we have a key mapping, we can react to it using a client tick event.
 
@@ -76,17 +76,19 @@ This will print "Key Pressed!" to the in-game chat every time the mapped key is 
 
 ![Message in Chat](/assets/develop/key-mappings/key_mapping_pressed.png)
 
-## Reacting to Key Mappings In-Screen {#reacting-to-key-mappings-in-screen}
+## Reacting to Key Mappings on Active Screens {#reacting-to-key-mappings-on-active-screens}
 
-As you can see in the previous example, we react to key mappings in-game. However, we can also react to key mappings inside a screen.
+As you can see in the previous example, we react to key mappings outside of screens. However, we can also react to key mappings inside of screens.
 
 <<< @/reference/latest/src/client/java/com/example/docs/keymapping/ExampleModKeyMappingsClient.java#screen_before_init_event
 
-This will print "The key was pressed!" in the console if the player is not inside a world or else it will close the screen and print "Key Pressed! Closing screen" to the in-game chat every time the mapped key is pressed while the screen is open.
+This checks if the current screen is the `TitleScreen` or `CreativeModeInventoryScreen`. If it is, pressing the mapped key while outside a world (when no player entity exists) will log "The key was pressed!", or if pressed inside a world, it will close the screen and send "Key Pressed! Closing screen" to the in-game chat.
+
+Note that the `InventoryScreen` swaps out for `CreativeModeInventoryScreen` when in creative mode, so the check should be done for both screens if you want to react to the key mapping in both survival and creative mode.
 
 ::: tip
 
-it is recommended to wrap the `ScreenKeyboardEvents` with `screen instanceof` check to ensure that the event is only triggered in the intended screen otherwise it will trigger in all screens.
+Though not recommended, you can remove the `screen instanceof` check to hook the event listener to all screens. This will allow you to react to key mappings in any screen.
 
 :::
 
