@@ -23,7 +23,7 @@ public class RenderingConceptsEntrypoint implements ClientModInitializer {
 	}
 
 	// #region hud_layer
-	private HudElement hudLayer() {
+	private HudElement waithudLayer() {
 		return (graphics, deltaTracker) -> {
 			// #endregion hud_layer
 
@@ -59,8 +59,8 @@ public class RenderingConceptsEntrypoint implements ClientModInitializer {
 			// Shift entire square so that it rotates in its center.
 			matrices.translate(-20f, -40f);
 			// #endregion rotating_square
+			graphics.fillGradient(5, 20, 35, 80, 0xFF414141, 0xFF000000);
 			// #endregion hud_layer
-			graphics.fillGradient(5, 20, 35, 60, 0xFF414141, 0xFF000000);
 
 			// #region hud_layer
 			// #region scaling_square
@@ -72,4 +72,20 @@ public class RenderingConceptsEntrypoint implements ClientModInitializer {
 		};
 	}
 	// #endregion hud_layer
+
+	private HudElement hudLayer() {
+		return (graphics, deltaTracker) -> {
+			Matrix3x2fStack matrices = graphics.pose();
+			this.totalTickProgress += deltaTracker.getGameTimeDeltaPartialTick(true);
+			matrices.pushMatrix();
+			float scaleAmount = Mth.sin(this.totalTickProgress / 10F) / 2F + 1.5F;
+			matrices.translate(50.0f, 50.0f);
+			matrices.rotate((float) Math.toRadians(this.totalTickProgress));
+			matrices.scale(scaleAmount, scaleAmount);
+			matrices.scale(1.0f, 1.4f);
+			matrices.rotate((float) Math.toRadians(45.0f));
+			graphics.fillGradient(-10, -10, 10, 10, 0xFF414141, 0xFF000000);
+			matrices.popMatrix();
+		};
+	}
 }
