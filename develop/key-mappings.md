@@ -66,7 +66,7 @@ Translations can be added manually or using [data generation](./data-generation/
 
 ![Translated Key Category and Mapping](/assets/develop/key-mappings/translated.png)
 
-## Reacting to Key Mappings Outside of Screens {#reacting-to-key-mappings-outside-of-screens}
+## Reacting to Key Mappings In-World {#reacting-to-key-mappings-in-world}
 
 Now that we have a key mapping, if we want to react to it when gameplay is active, we can use a client tick event:
 
@@ -76,7 +76,7 @@ This will print "Key Pressed!" to the in-game chat every time the mapped key is 
 
 ![Message in Chat](/assets/develop/key-mappings/key_mapping_pressed.png)
 
-## Reacting to Key Mappings Inside of Screens {#reacting-to-key-mappings-on-active-screens}
+## Reacting to Key Mappings In-GUI {#reacting-to-key-mappings-in-gui}
 
 We can also react to key mappings inside of screens, both when a world is open, and when it's not.
 
