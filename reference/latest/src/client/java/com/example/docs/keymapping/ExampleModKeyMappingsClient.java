@@ -76,5 +76,4 @@ public class ExampleModKeyMappingsClient implements ClientModInitializer {
 		client.gui.setScreen(null);
 	}
 	// #endregion helper_methods
-
 }
