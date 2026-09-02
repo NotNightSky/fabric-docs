@@ -47,19 +47,16 @@ public class ExampleModKeyMappingsClient implements ClientModInitializer {
 
 		// #region screen_before_init_event
 		ScreenEvents.BEFORE_INIT.register((client, screen, scaledWidth, scaledHeight) -> {
-			if (screen instanceof CreativeModeInventoryScreen || screen instanceof TitleScreen) {
-				ScreenKeyboardEvents.beforeKeyPress(screen).register((s, keyEvent) -> {
-					if (this.sendToChatKey.matches(keyEvent)) {
-						if (client.player == null) {
-							ExampleMod.LOGGER.info("The key was pressed!");
-							return;
-						}
-
-						client.gui.setScreen(null);
-						client.player.sendSystemMessage(Component.literal("Key Pressed! Closing screen."));
-					}
-				});
+			if (!(screen instanceof CreativeModeInventoryScreen) && !(screen instanceof TitleScreen)) {
+				return;
 			}
+		
+			ScreenKeyboardEvents.beforeKeyPress(screen).register((s, keyEvent) -> {
+				if (!this.sendToChatKey.matches(keyEvent)) return;
+		
+				this.handleKeyPressInMainScreen(client);
+				this.handleKeyPressInGameScreen(client);
+			});
 		});
 		// #endregion screen_before_init_event
 	}

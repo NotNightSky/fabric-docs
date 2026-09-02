@@ -68,7 +68,7 @@ Translations can be added manually or using [data generation](./data-generation/
 
 ## Reacting to Key Mappings Outside of Screens {#reacting-to-key-mappings-outside-of-screens}
 
-Now that we have a key mapping, we can react to it using a client tick event.
+Now that we have a key mapping, if we want to react to it when gameplay is active, we can use a client tick event:
 
 <<< @/reference/latest/src/client/java/com/example/docs/keymapping/ExampleModKeyMappingsClient.java#client_tick_event
 
@@ -78,11 +78,14 @@ This will print "Key Pressed!" to the in-game chat every time the mapped key is 
 
 ## Reacting to Key Mappings Inside of Screens {#reacting-to-key-mappings-on-active-screens}
 
-As you can see in the previous example, we react to key mappings outside of screens. However, we can also react to key mappings inside of screens.
+We can also react to key mappings inside of screens, both when a world is open, and when it's not.
 
 <<< @/reference/latest/src/client/java/com/example/docs/keymapping/ExampleModKeyMappingsClient.java#screen_before_init_event
 
-This checks if the current screen is the `TitleScreen` or `CreativeModeInventoryScreen`. If it is, pressing the mapped key while outside a world (when no player entity exists) will log "The key was pressed!", or if pressed inside a world, it will close the screen and send "Key Pressed! Closing screen" to the in-game chat.
+This checks if the current screen is the `TitleScreen` or `CreativeModeInventoryScreen`. If it is, we implement two distinct behaviors based on whether we are inside or outside a world:
+
+- When outside a world, in other words when no player entity exists, it logs "The key was pressed!" to console.
+- Otherwise, if pressed inside a world, it sends "Key Pressed! Closing screen" to the in-game chat and closes the screen.
 
 Note that the `InventoryScreen` swaps out for `CreativeModeInventoryScreen` when in creative mode, so the check should be done for both screens if you want to react to the key mapping in both survival and creative mode.
 
