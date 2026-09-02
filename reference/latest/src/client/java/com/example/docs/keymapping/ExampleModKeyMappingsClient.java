@@ -3,6 +3,7 @@ package com.example.docs.keymapping;
 import com.mojang.blaze3d.platform.InputConstants;
 
 import net.minecraft.client.KeyMapping;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.TitleScreen;
 import net.minecraft.client.gui.screens.inventory.CreativeModeInventoryScreen;
 import net.minecraft.network.chat.Component;
@@ -50,14 +51,30 @@ public class ExampleModKeyMappingsClient implements ClientModInitializer {
 			if (!(screen instanceof CreativeModeInventoryScreen) && !(screen instanceof TitleScreen)) {
 				return;
 			}
-		
+
 			ScreenKeyboardEvents.beforeKeyPress(screen).register((s, keyEvent) -> {
 				if (!this.sendToChatKey.matches(keyEvent)) return;
-		
+
 				this.handleKeyPressInMainScreen(client);
 				this.handleKeyPressInGameScreen(client);
 			});
 		});
 		// #endregion screen_before_init_event
 	}
+
+	// #region helper_methods
+	private void handleKeyPressInMainScreen(Minecraft client) {
+		if (client.player != null) return;
+
+		ExampleMod.LOGGER.info("The key was pressed!");
+	}
+
+	private void handleKeyPressInGameScreen(Minecraft client) {
+		if (client.player == null) return;
+
+		client.player.sendSystemMessage(Component.literal("Key Pressed! Closing screen."));
+		client.gui.setScreen(null);
+	}
+	// #endregion helper_methods
+
 }

@@ -82,12 +82,22 @@ We can also react to key mappings inside of screens, both when a world is open, 
 
 <<< @/reference/latest/src/client/java/com/example/docs/keymapping/ExampleModKeyMappingsClient.java#screen_before_init_event
 
+And add these helper methods.
+
+<<< @/reference/latest/src/client/java/com/example/docs/keymapping/ExampleModKeyMappingsClient.java#helper_methods
+
 This checks if the current screen is the `TitleScreen` or `CreativeModeInventoryScreen`. If it is, we implement two distinct behaviors based on whether we are inside or outside a world:
 
 - When outside a world, in other words when no player entity exists, it logs "The key was pressed!" to console.
 - Otherwise, if pressed inside a world, it sends "Key Pressed! Closing screen" to the in-game chat and closes the screen.
 
 <VideoPlayer src="/assets/develop/key-mappings/in_screen_key_map.webm">Key press in screen with a world open</VideoPlayer>
+
+::: info
+
+The second "Key Pressed!" message is sent to the chat because of the previously registered `clientTickEvents` event listener.
+
+:::
 
 ::: tip
 
@@ -98,4 +108,3 @@ If needed, you can remove the `screen instanceof` check to hook the event listen
 :::
 
 <!---->
-.
