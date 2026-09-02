@@ -66,7 +66,7 @@ Translations can be added manually or using [data generation](./data-generation/
 
 ![Translated Key Category and Mapping](/assets/develop/key-mappings/translated.png)
 
-## Reacting to Key Mappings Outside of Screens {#reacting-to-key-mappings}
+## Reacting to Key Mappings Outside of Screens {#reacting-to-key-mappings-outside-of-screens}
 
 Now that we have a key mapping, we can react to it using a client tick event.
 
