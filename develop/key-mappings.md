@@ -96,3 +96,4 @@ This checks if the current screen is the `TitleScreen` or `CreativeModeInventory
 If needed, you can remove the `screen instanceof` check to hook the event listener to all screens.
 
 :::
+
