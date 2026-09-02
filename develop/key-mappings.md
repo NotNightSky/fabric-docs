@@ -87,12 +87,12 @@ This checks if the current screen is the `TitleScreen` or `CreativeModeInventory
 - When outside a world, in other words when no player entity exists, it logs "The key was pressed!" to console.
 - Otherwise, if pressed inside a world, it sends "Key Pressed! Closing screen" to the in-game chat and closes the screen.
 
-Note that the `InventoryScreen` swaps out for `CreativeModeInventoryScreen` when in creative mode, so the check should be done for both screens if you want to react to the key mapping in both survival and creative mode.
+<VideoPlayer src="/assets/develop/key-mappings/in_screen_key_map.webm">Key press in screen with a world open</VideoPlayer>
 
 ::: tip
 
-Though not recommended, you can remove the `screen instanceof` check to hook the event listener to all screens. This will allow you to react to key mappings in any screen.
+`screen` will be an instance of `InventoryScreen` in survival mode, whereas it will be a `CreativeModeInventoryScreen` when in creative mode.
+
+If needed, you can remove the `screen instanceof` check to hook the event listener to all screens.
 
 :::
-
-<VideoPlayer src="/assets/develop/key-mappings/in_screen_key_map.webm">Close and print message</VideoPlayer>
