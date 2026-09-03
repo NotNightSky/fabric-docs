@@ -128,7 +128,7 @@ Previously, we created a `ResourceKey<EquipmentAsset>` constant called `GUIDITE_
 
 - `assets/example-mod/textures/entity/equipment/humanoid/guidite.png` - Contains upper body and boot textures.
 - `assets/example-mod/textures/entity/equipment/humanoid_leggings/guidite.png` - Contains legging textures.
-- `assets/example-mod/textures/entity/equipment/humanoid_baby/guidite.png` - Contains the texture for baby humanoid
+- `assets/example-mod/textures/entity/equipment/humanoid_baby/guidite.png` - Contains the texture for baby humanoid.
 
 <DownloadEntry downloadURL="/assets/develop/items/example_armor_layer_textures.zip">Guidite Armor Model Textures</DownloadEntry>
 
