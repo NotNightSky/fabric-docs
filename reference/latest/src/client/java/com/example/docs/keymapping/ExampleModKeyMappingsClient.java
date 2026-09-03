@@ -72,7 +72,7 @@ public class ExampleModKeyMappingsClient implements ClientModInitializer {
 	private void handleKeyPressInGameScreen(Minecraft client) {
 		if (client.player == null) return;
 
-		client.player.sendSystemMessage(Component.literal("Key Pressed! Closing screen."));
+		client.player.sendSystemMessage(Component.literal("Key press detected in the GUI with a world open, closing screen"));
 		client.gui.setScreen(null);
 	}
 	// #endregion helper_methods
