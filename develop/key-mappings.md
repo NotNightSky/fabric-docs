@@ -72,7 +72,7 @@ Now that we have a key mapping, if we want to react to it when gameplay is activ
 
 <<< @/reference/latest/src/client/java/com/example/docs/keymapping/ExampleModKeyMappingsClient.java#client_tick_event
 
-This will print "Key Pressed!" to the in-game chat every time the mapped key is pressed. Keep in mind that holding the key will repeatedly print the message to the chat, so you might want to implement guards if this logic only needs to trigger once.
+This will print "Key press detected in the world" to the in-game chat every time the mapped key is pressed. Keep in mind that holding the key will repeatedly print the message to the chat, so you might want to implement guards if this logic only needs to trigger once.
 
 ![Message in Chat](/assets/develop/key-mappings/key_mapping_pressed.png)
 
@@ -82,20 +82,20 @@ We can also react to key mappings inside of screens, both when a world is open, 
 
 <<< @/reference/latest/src/client/java/com/example/docs/keymapping/ExampleModKeyMappingsClient.java#screen_before_init_event
 
-And add these helper methods.
+And add the two handlers:
 
 <<< @/reference/latest/src/client/java/com/example/docs/keymapping/ExampleModKeyMappingsClient.java#helper_methods
 
 This checks if the current screen is the `TitleScreen` or `CreativeModeInventoryScreen`. If it is, we implement two distinct behaviors based on whether we are inside or outside a world:
 
-- When outside a world, in other words when no player entity exists, it logs "The key was pressed!" to console.
-- Otherwise, if pressed inside a world, it sends "Key Pressed! Closing screen" to the in-game chat and closes the screen.
+- When outside a world, in other words when no player entity exists, it logs "Key press detected in the title screen" to console.
+- Otherwise, if pressed inside a world, it sends "Key press detected in the GUI with a world open, closing screen" to the in-game chat and closes the screen.
 
-<VideoPlayer src="/assets/develop/key-mappings/in_screen_key_map.webm">Key press in screen with a world open</VideoPlayer>
+<VideoPlayer src="/assets/develop/key-mappings/in_screen_key_map.webm">Key press in the GUI with a world open</VideoPlayer>
 
 ::: info
 
-The second "Key Pressed!" message is sent to the chat because of the previously registered `clientTickEvents` event listener.
+The second "Key press detected in the world" message is sent to the chat because of the previously registered `clientTickEvents` event listener.
 
 :::
 

@@ -41,6 +41,8 @@ public class ExampleModKeyMappingsClient implements ClientModInitializer {
 			while (this.sendToChatKey.consumeClick()) {
 				if (client.player != null) {
 					client.player.sendSystemMessage(Component.literal("Key Pressed!"));
+				if (client.player != null) {
+					client.player.sendSystemMessage(Component.literal("Key press detected in the world"));
 				}
 			}
 		});
@@ -66,7 +68,7 @@ public class ExampleModKeyMappingsClient implements ClientModInitializer {
 	private void handleKeyPressInMainScreen(Minecraft client) {
 		if (client.player != null) return;
 
-		ExampleMod.LOGGER.info("The key was pressed!");
+		ExampleMod.LOGGER.info("Key press detected in the title screen");
 	}
 
 	private void handleKeyPressInGameScreen(Minecraft client) {
