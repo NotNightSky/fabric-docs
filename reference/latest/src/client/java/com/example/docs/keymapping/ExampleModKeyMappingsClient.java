@@ -40,7 +40,6 @@ public class ExampleModKeyMappingsClient implements ClientModInitializer {
 		ClientTickEvents.END_CLIENT_TICK.register(client -> {
 			while (this.sendToChatKey.consumeClick()) {
 				if (client.player == null) return;
-				
 				client.player.sendSystemMessage(Component.literal("Key press detected in the world"));
 			}
 		});
