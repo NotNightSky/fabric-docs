@@ -39,11 +39,9 @@ public class ExampleModKeyMappingsClient implements ClientModInitializer {
 		// #region client_tick_event
 		ClientTickEvents.END_CLIENT_TICK.register(client -> {
 			while (this.sendToChatKey.consumeClick()) {
-				if (client.player != null) {
-					client.player.sendSystemMessage(Component.literal("Key Pressed!"));
-				if (client.player != null) {
-					client.player.sendSystemMessage(Component.literal("Key press detected in the world"));
-				}
+				if (client.player == null) return;
+				
+				client.player.sendSystemMessage(Component.literal("Key press detected in the world"));
 			}
 		});
 		// #endregion client_tick_event
