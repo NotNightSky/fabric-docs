@@ -4,6 +4,7 @@ description: Creating key mappings and reacting to them.
 authors:
   - cassiancc
   - dicedpixels
+  - its-miroma
   - NotNightSky
 resources:
   https://upload.wikimedia.org/wikipedia/commons/d/da/KB_United_States.svg: Standard US Keyboard Layout
