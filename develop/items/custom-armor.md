@@ -118,7 +118,7 @@ When an entity wears your armor, nothing will be shown. This is because you're m
 
 ::: info
 
-Note that since version 26.1.1, the armor texture for baby humanoids is no longer a scaled down version of the adult humanoid texture. Instead, it is a separate texture that must be provided separately.
+Note that since version 26.1, the armor texture for baby humanoids is no longer a scaled down version of the adult humanoid texture. Instead, it is a separate texture that must be provided separately.
 
 :::
 
