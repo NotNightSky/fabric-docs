@@ -111,6 +111,10 @@ Create a new JSON file at: `src/main/resources/assets/example-mod/lang/en_us.jso
 
 You can either restart the game or build your mod and press <kbd>F3</kbd>+<kbd>T</kbd> to apply changes.
 
+::: info TIP
+
+Adding translations can be done though data generation. See [Translation Generation](../data-generation/translations).
+
 ## Adding a Client Item, Texture and Model {#adding-a-client-item-texture-and-model}
 
 For your item to have a proper appearance, it requires:
